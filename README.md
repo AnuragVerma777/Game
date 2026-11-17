@@ -13,7 +13,7 @@
 Experience CARROM CLASH directly in your browser on desktop, mobile, or Meta Quest:
 
 <p align="center">
-  <a href="https://your-vercel-deployment.vercel.app">
+  <a href="https://vercel.com/new/anuragverma777/success?auto-redirect=true&developer-id=&external-id=&redirect-url=&branch=main&deploymentUrl=game224-ccp5280q4-anuragverma777.vercel.app&projectName=game224&s=https%3A%2F%2Fgithub.com%2FAnuragVerma777%2FGame&gitOrgLimit=&hasTrialAvailable=1&totalProjects=1&flow-id=lNvH1v8fCi1uxKs7Z4sVa&teamSlug=anuragverma777">
     <img src="https://img.shields.io/badge/PLAY%20NOW-Vercel%20Deployment-00c853?style=for-the-badge&logo=vercel&logoColor=white" alt="Play Now on Vercel" />
   </a>
 </p>
