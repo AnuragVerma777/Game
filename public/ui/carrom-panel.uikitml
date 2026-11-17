@@ -1,0 +1,555 @@
+<!--
+  CARROM CLASH — Tournament Edition Multi-Screen Spatial Glass Panel
+  PMNDRS UIKit + Horizon Dark Glass Theme
+-->
+<style>
+  .panel-root {
+    flex-direction: column;
+    width: 500px;
+    background-color: rgba(12, 14, 20, 0.90);
+    border-radius: 24px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .panel-content {
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 24px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .header-badge-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .version-badge {
+    color: #00d2d3;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: rgba(0, 210, 211, 0.12);
+    border-radius: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .section-title {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .eyebrow {
+    color: #ffd700;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .heading {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 38px;
+  }
+
+  .subtitle {
+    color: #9ea4b4;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .view-container {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .menu-button-col {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .menu-btn {
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .turn-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 215, 0, 0.12);
+    border-radius: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
+    margin-top: 6px;
+    border-width: 1px;
+    border-color: rgba(255, 215, 0, 0.35);
+  }
+
+  .turn-title {
+    color: #ffd700;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  .turn-extra {
+    color: #2ecc71;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .turn-queen-cover {
+    color: #ff4757;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .match-grid {
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 6px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .stat-col {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .stat-label {
+    color: #8a90a0;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .stat-value {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .stat-status {
+    color: #4cd137;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .players-score-row {
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-top: 6px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .player-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .p1-name {
+    color: #ffd700;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .p2-name {
+    color: #00d2d3;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .p3-name {
+    color: #2ecc71;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .p4-name {
+    color: #9b59b6;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .player-score {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .pieces-grid {
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-top: 6px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .stat-white {
+    color: #f5f0e6;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .stat-queen {
+    color: #ff4757;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .stat-black {
+    color: #c0c4cc;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .power-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0, 210, 211, 0.08);
+    border-radius: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 14px;
+    padding-right: 14px;
+    margin-top: 6px;
+    border-width: 1px;
+    border-color: rgba(0, 210, 211, 0.22);
+  }
+
+  .power-label {
+    color: #00d2d3;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .power-value {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .pass-modal-box {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 18px;
+    padding-right: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-color: rgba(255, 215, 0, 0.3);
+  }
+
+  .pass-headline {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .pass-instruction {
+    color: #ffd700;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .button-row {
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-bottom: 20px;
+    margin-top: 6px;
+  }
+
+  .button-half {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-label {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    transform-translate-y: 1px;
+  }
+</style>
+
+<Panel class="panel-root">
+  <div class="panel-content">
+    <div id="panel-brand-header" class="panel-header-block">
+      <div class="eyebrow">TOURNAMENT EDITION</div>
+      <div class="heading">CARROM CLASH</div>
+      <div class="subtitle">Premium WebXR Carrom Simulation with Full Physics</div>
+    </div>
+
+    <div id="view-main-menu" class="view-container">
+      <div class="menu-button-col">
+        <Button id="btn-play-alone" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <Play></Play>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">PLAY ALONE</ButtonLabel>
+        </Button>
+
+        <Button id="btn-play-friends" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <Users></Users>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">PLAY WITH FRIENDS</ButtonLabel>
+        </Button>
+
+        <Button id="btn-settings" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <Settings></Settings>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">SETTINGS</ButtonLabel>
+        </Button>
+      </div>
+    </div>
+
+    <div id="view-alone-menu" class="view-container" style="display: none">
+      <div class="section-title">Single Player Mode</div>
+      <div class="subtitle">Select your gameplay preference:</div>
+      <div class="menu-button-col">
+        <Button id="btn-alone-practice" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <Play></Play>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">SOLO PRACTICE (FREE ROAM)</ButtonLabel>
+        </Button>
+
+        <Button id="btn-alone-ai" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <Users></Users>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">PLAY VS COMPUTER AI</ButtonLabel>
+        </Button>
+
+        <Button id="btn-alone-back" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <RotateCcw></RotateCcw>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">BACK TO MAIN MENU</ButtonLabel>
+        </Button>
+      </div>
+    </div>
+
+    <div id="view-friends-menu" class="view-container" style="display: none">
+      <div class="section-title">Local Pass-and-Play</div>
+      <div class="subtitle">Select player count on this device:</div>
+      <div class="menu-button-col">
+        <Button id="btn-players-2" class="menu-btn" variant="tertiary">
+          <ButtonLabel class="button-label">1 FRIEND (2 PLAYERS TOTAL)</ButtonLabel>
+        </Button>
+        <Button id="btn-players-3" class="menu-btn" variant="tertiary">
+          <ButtonLabel class="button-label">2 FRIENDS (3 PLAYERS TOTAL)</ButtonLabel>
+        </Button>
+        <Button id="btn-players-4" class="menu-btn" variant="tertiary">
+          <ButtonLabel class="button-label">3 FRIENDS (4 PLAYERS TOTAL)</ButtonLabel>
+        </Button>
+        <Button id="btn-friends-back" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <RotateCcw></RotateCcw>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">BACK TO MAIN MENU</ButtonLabel>
+        </Button>
+      </div>
+    </div>
+
+    <div id="view-settings-menu" class="view-container" style="display: none">
+      <div class="section-title">Game Settings</div>
+      <div class="subtitle">Audio, aim guides &amp; camera presets:</div>
+      <div class="menu-button-col">
+        <Button id="btn-toggle-sound" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <Volume2></Volume2>
+          </ButtonIcon>
+          <ButtonLabel id="lbl-sound-status" class="button-label">SOUND FX: ENABLED</ButtonLabel>
+        </Button>
+
+        <Button id="btn-toggle-aim" class="menu-btn" variant="tertiary">
+          <ButtonLabel id="lbl-aim-status" class="button-label">AIM TRAJECTORY GUIDE: FULL</ButtonLabel>
+        </Button>
+
+        <Button id="btn-toggle-cam" class="menu-btn" variant="tertiary">
+          <ButtonLabel id="lbl-cam-status" class="button-label">CAMERA: BROADCAST 3D (ANGLED)</ButtonLabel>
+        </Button>
+
+        <Button id="btn-settings-back" class="menu-btn" variant="tertiary">
+          <ButtonIcon>
+            <RotateCcw></RotateCcw>
+          </ButtonIcon>
+          <ButtonLabel class="button-label">BACK TO MAIN MENU</ButtonLabel>
+        </Button>
+      </div>
+    </div>
+
+    <div id="view-match-announcement" class="view-container" style="display: none">
+      <div class="pass-modal-box">
+        <div class="eyebrow">TOURNAMENT 1v1 MATCH</div>
+        <div id="match-announcement-title" class="pass-headline">PLAYER 1 BREAKS FIRST!</div>
+        <div id="match-announcement-subtitle" class="pass-instruction">Opening break awarded to Player 1 (Gold)</div>
+        <Button id="btn-start-match" class="menu-btn" variant="tertiary" style="width: 260px; margin-top: 10px">
+          <ButtonLabel class="button-label">TAKE OPENING BREAK</ButtonLabel>
+        </Button>
+      </div>
+    </div>
+
+    <div id="view-gameplay" class="view-container" style="display: none">
+      <div class="turn-banner">
+        <div id="turn-title" class="turn-title">PLAYER 1's TURN</div>
+        <div id="turn-extra" class="turn-extra" style="display: none">EXTRA STRIKE</div>
+        <div id="turn-queen-cover" class="turn-queen-cover" style="display: none">COVER THE QUEEN!</div>
+      </div>
+
+      <div id="players-score-row" class="players-score-row">
+        <div id="p1-card" class="player-card">
+          <div class="p1-name">P1 (GOLD)</div>
+          <div id="p1-score" class="player-score">0</div>
+        </div>
+        <div id="p2-card" class="player-card">
+          <div class="p2-name">P2 (CYAN)</div>
+          <div id="p2-score" class="player-score">0</div>
+        </div>
+        <div id="p3-card" class="player-card" style="display: none">
+          <div class="p3-name">P3 (GREEN)</div>
+          <div id="p3-score" class="player-score">0</div>
+        </div>
+        <div id="p4-card" class="player-card" style="display: none">
+          <div class="p4-name">P4 (PURPLE)</div>
+          <div id="p4-score" class="player-score">0</div>
+        </div>
+      </div>
+
+      <div class="pieces-grid">
+        <div class="stat-col">
+          <div class="stat-label">WHITE (10P)</div>
+          <div id="white-count" class="stat-white">9 / 9</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-label">QUEEN (25P)</div>
+          <div id="queen-status" class="stat-queen">CENTER</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-label">BLACK (5P)</div>
+          <div id="black-count" class="stat-black">9 / 9</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-label">SHOTS</div>
+          <div id="shot-count" class="stat-value">0</div>
+        </div>
+        <div class="stat-col">
+          <div class="stat-label">STATUS</div>
+          <div id="game-status" class="stat-status">READY</div>
+        </div>
+      </div>
+
+      <div class="power-container" style="display: none">
+        <div class="power-label">SHOT POWER</div>
+        <div id="shot-power" class="power-value">0%</div>
+      </div>
+    </div>
+
+    <div id="view-turn-pass" class="view-container" style="display: none">
+      <div class="pass-modal-box">
+        <div class="eyebrow">LOCAL PASS &amp; PLAY</div>
+        <div class="pass-headline">TURN HANDOVER</div>
+        <div id="pass-instruction" class="pass-instruction">Pass the device to Player 2</div>
+        <div class="subtitle" style="text-align: center">Position the striker on the baseline to take your strike.</div>
+        <Button id="btn-turn-continue" class="menu-btn" variant="tertiary" style="width: 260px; margin-top: 8px">
+          <ButtonLabel class="button-label">I'M READY TO STRIKE</ButtonLabel>
+        </Button>
+      </div>
+    </div>
+
+    <div id="view-game-over" class="view-container" style="display: none">
+      <div class="pass-modal-box">
+        <div class="pass-headline">MATCH COMPLETED!</div>
+        <div id="winner-banner" class="pass-instruction">PLAYER 1 WINS!</div>
+        <div id="final-scores-breakdown" class="subtitle" style="text-align: center">Final Score: 45</div>
+        <Button id="btn-play-again" class="menu-btn" variant="tertiary" style="width: 260px; margin-top: 8px">
+          <ButtonLabel class="button-label">PLAY AGAIN</ButtonLabel>
+        </Button>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-row">
+    <Button id="btn-menu-back" class="button-half" variant="tertiary" style="display: none">
+      <ButtonIcon>
+        <RotateCcw></RotateCcw>
+      </ButtonIcon>
+      <ButtonLabel class="button-label">MAIN MENU</ButtonLabel>
+    </Button>
+
+    <Button id="reset-button" class="button-half" variant="tertiary" style="display: none">
+      <ButtonIcon>
+        <RotateCcw></RotateCcw>
+      </ButtonIcon>
+      <ButtonLabel class="button-label">RESET RACK</ButtonLabel>
+    </Button>
+
+    <Button id="xr-button" class="button-half" variant="tertiary">
+      <ButtonIcon>
+        <RectangleGoggles></RectangleGoggles>
+      </ButtonIcon>
+      <ButtonLabel class="button-label">ENTER XR</ButtonLabel>
+    </Button>
+
+    <Button id="exit-button" class="button-half" variant="tertiary" style="display: none">
+      <ButtonIcon>
+        <LogIn></LogIn>
+      </ButtonIcon>
+      <ButtonLabel class="button-label">EXIT XR</ButtonLabel>
+    </Button>
+  </div>
+</Panel>

@@ -1,0 +1,1223 @@
+{
+  "version": "iwsdk.scene.v1",
+  "units": "meters",
+  "components": {
+    "com.iwsdk.components.DomeGradient": {
+      "sky": [
+        0.03,
+        0.035,
+        0.05,
+        1
+      ],
+      "equator": [
+        0.06,
+        0.065,
+        0.08,
+        1
+      ],
+      "ground": [
+        0.02,
+        0.02,
+        0.025,
+        1
+      ],
+      "elevationDeg": 28,
+      "azimuthDeg": -35,
+      "dither": true
+    },
+    "com.iwsdk.components.IBLGradient": {
+      "sky": [
+        0.22,
+        0.24,
+        0.3,
+        1
+      ],
+      "equator": [
+        0.15,
+        0.16,
+        0.2,
+        1
+      ],
+      "ground": [
+        0.08,
+        0.08,
+        0.1,
+        1
+      ],
+      "intensity": 0.4
+    }
+  },
+  "environment": {
+    "toneMapping": "aces",
+    "exposure": 1.15,
+    "shadows": true,
+    "shadowMapType": "pcf"
+  },
+  "resources": {},
+  "nodes": [
+    {
+      "id": "studio-floor",
+      "name": "Studio Floor",
+      "framingRole": "support",
+      "content": {
+        "type": "asset",
+        "asset": "studio-floor",
+        "receiveShadow": true
+      },
+      "components": {
+        "LocomotionEnvironment": {},
+        "DomeFade": {
+          "start": 3.5,
+          "end": 8
+        }
+      }
+    },
+    {
+      "id": "key-light",
+      "name": "Key Light",
+      "transform": {
+        "position": [
+          -1.2,
+          4.2,
+          1
+        ],
+        "rotationDeg": [
+          -68,
+          -15,
+          0
+        ]
+      },
+      "components": {
+        "DirectionalLight": {
+          "color": [
+            1,
+            0.96,
+            0.9,
+            1
+          ],
+          "intensity": 2.8,
+          "castShadow": true,
+          "shadowMapSize": "2048",
+          "shadowCameraSize": 6,
+          "shadowCameraNear": 1,
+          "shadowCameraFar": 15,
+          "shadowRadius": 5,
+          "shadowBias": -0.0004,
+          "shadowNormalBias": 0.02
+        }
+      }
+    },
+    {
+      "id": "fill-light",
+      "name": "Fill Light",
+      "components": {
+        "HemisphereLight": {
+          "skyColor": [
+            0.38,
+            0.42,
+            0.54,
+            1
+          ],
+          "groundColor": [
+            0.12,
+            0.13,
+            0.16,
+            1
+          ],
+          "intensity": 0.85
+        }
+      }
+    },
+    {
+      "id": "rim-light",
+      "name": "Rim Accent Light",
+      "transform": {
+        "position": [
+          1.8,
+          2.5,
+          -2.4
+        ],
+        "rotationDeg": [
+          35,
+          140,
+          0
+        ]
+      },
+      "components": {
+        "DirectionalLight": {
+          "color": [
+            0.65,
+            0.82,
+            1,
+            1
+          ],
+          "intensity": 1.2,
+          "castShadow": false
+        }
+      }
+    },
+    {
+      "id": "carrom-table",
+      "name": "Carrom Table",
+      "content": {
+        "type": "asset",
+        "asset": "carrom-board",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0,
+          0,
+          -0.65
+        ]
+      },
+      "children": [
+        {
+          "id": "table-contact-shadow",
+          "name": "Table Base Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              0.002,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                1.1,
+                1.1
+              ],
+              "height": 0.002
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-queen",
+      "name": "Queen (Red)",
+      "content": {
+        "type": "asset",
+        "asset": "coin-queen",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0,
+          0.754,
+          -0.65
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "queen",
+          "initialX": 0,
+          "initialY": 0.754,
+          "initialZ": -0.65,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-queen-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.038,
+                0.038
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-inner-0-white",
+      "name": "White Coin Inner 1",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0318,
+          0.754,
+          -0.65
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": 0.0318,
+          "initialY": 0.754,
+          "initialZ": -0.65,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-inner-0-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-inner-1-black",
+      "name": "Black Coin Inner 1",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0159,
+          0.754,
+          -0.6225
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": 0.0159,
+          "initialY": 0.754,
+          "initialZ": -0.6225,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-inner-1-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-inner-2-white",
+      "name": "White Coin Inner 2",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0159,
+          0.754,
+          -0.6225
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": -0.0159,
+          "initialY": 0.754,
+          "initialZ": -0.6225,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-inner-2-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-inner-3-black",
+      "name": "Black Coin Inner 2",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0318,
+          0.754,
+          -0.65
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": -0.0318,
+          "initialY": 0.754,
+          "initialZ": -0.65,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-inner-3-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-inner-4-white",
+      "name": "White Coin Inner 3",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0159,
+          0.754,
+          -0.6775
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": -0.0159,
+          "initialY": 0.754,
+          "initialZ": -0.6775,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-inner-4-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-inner-5-black",
+      "name": "Black Coin Inner 3",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0159,
+          0.754,
+          -0.6775
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": 0.0159,
+          "initialY": 0.754,
+          "initialZ": -0.6775,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-inner-5-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-corner-0-black",
+      "name": "Black Coin Outer Corner 1",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0636,
+          0.754,
+          -0.65
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": 0.0636,
+          "initialY": 0.754,
+          "initialZ": -0.65,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-corner-0-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-corner-1-white",
+      "name": "White Coin Outer Corner 2",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0318,
+          0.754,
+          -0.5949
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": 0.0318,
+          "initialY": 0.754,
+          "initialZ": -0.5949,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-corner-1-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-corner-2-black",
+      "name": "Black Coin Outer Corner 3",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0318,
+          0.754,
+          -0.5949
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": -0.0318,
+          "initialY": 0.754,
+          "initialZ": -0.5949,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-corner-2-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-corner-3-white",
+      "name": "White Coin Outer Corner 4",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0636,
+          0.754,
+          -0.65
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": -0.0636,
+          "initialY": 0.754,
+          "initialZ": -0.65,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-corner-3-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-corner-4-black",
+      "name": "Black Coin Outer Corner 5",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0318,
+          0.754,
+          -0.7051
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": -0.0318,
+          "initialY": 0.754,
+          "initialZ": -0.7051,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-corner-4-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-corner-5-white",
+      "name": "White Coin Outer Corner 6",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0318,
+          0.754,
+          -0.7051
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": 0.0318,
+          "initialY": 0.754,
+          "initialZ": -0.7051,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-corner-5-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-edge-0-white",
+      "name": "White Coin Outer Edge 1",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0477,
+          0.754,
+          -0.6225
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": 0.0477,
+          "initialY": 0.754,
+          "initialZ": -0.6225,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-edge-0-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-edge-1-black",
+      "name": "Black Coin Outer Edge 2",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0,
+          0.754,
+          -0.5949
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": 0,
+          "initialY": 0.754,
+          "initialZ": -0.5949,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-edge-1-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-edge-2-white",
+      "name": "White Coin Outer Edge 3",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0477,
+          0.754,
+          -0.6225
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": -0.0477,
+          "initialY": 0.754,
+          "initialZ": -0.6225,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-edge-2-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-edge-3-black",
+      "name": "Black Coin Outer Edge 4",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          -0.0477,
+          0.754,
+          -0.6775
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": -0.0477,
+          "initialY": 0.754,
+          "initialZ": -0.6775,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-edge-3-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-edge-4-white",
+      "name": "White Coin Outer Edge 5",
+      "content": {
+        "type": "asset",
+        "asset": "coin-white",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0,
+          0.754,
+          -0.7051
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "white",
+          "initialX": 0,
+          "initialY": 0.754,
+          "initialZ": -0.7051,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-edge-4-white-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "coin-outer-edge-5-black",
+      "name": "Black Coin Outer Edge 6",
+      "content": {
+        "type": "asset",
+        "asset": "coin-black",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0.0477,
+          0.754,
+          -0.6775
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "black",
+          "initialX": 0.0477,
+          "initialY": 0.754,
+          "initialZ": -0.6775,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "coin-outer-edge-5-black-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0039,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.036,
+                0.036
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "carrom-striker",
+      "name": "Carrom Striker",
+      "content": {
+        "type": "asset",
+        "asset": "carrom-striker",
+        "castShadow": true,
+        "receiveShadow": true
+      },
+      "transform": {
+        "position": [
+          0,
+          0.75425,
+          -0.41
+        ]
+      },
+      "components": {
+        "OneHandGrabbable": {},
+        "RayInteractable": {},
+        "CarromPiece": {
+          "pieceType": "striker",
+          "initialX": 0,
+          "initialY": 0.75425,
+          "initialZ": -0.41,
+          "pocketed": false
+        }
+      },
+      "children": [
+        {
+          "id": "carrom-striker-shadow",
+          "name": "Contact Shadow",
+          "transform": {
+            "position": [
+              0,
+              -0.0041,
+              0
+            ]
+          },
+          "components": {
+            "ContactShadow": {
+              "size": [
+                0.05,
+                0.05
+              ],
+              "height": 0.0003
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "carrom-panel",
+      "name": "Carrom Panel",
+      "content": {
+        "type": "asset",
+        "asset": "carrom-panel"
+      },
+      "transform": {
+        "position": [
+          0,
+          1.05,
+          -1.52
+        ],
+        "rotationDeg": [
+          -10,
+          0,
+          0
+        ],
+        "scale": 0.22
+      },
+      "components": {
+        "RayInteractable": {}
+      }
+    }
+  ]
+}
