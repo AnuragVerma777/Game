@@ -18,7 +18,6 @@ Experience CARROM CLASH directly in your browser on desktop, mobile, or Meta Que
   </a>
 </p>
 
-> **Deployment Link Note**: Replace `https://your-vercel-deployment.vercel.app` with your actual Vercel production URL once deployed via `npx vercel --prod`.
 
 ---
 
