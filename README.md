@@ -24,7 +24,7 @@ Experience CARROM CLASH directly in your browser on desktop, mobile, or Meta Que
 ## Gameplay Demo
 
 <p align="center">
-  <video src="docs/videos/carrom-clash-walkthrough.webm" controls width="100%"></video>
+  <video src="https://youtu.be/OnfJ-wEQYNE" controls width="100%"></video>
   <br />
   <em>Complete Gameplay Walkthrough: Main Menu, Slingshot Aiming, Live Power Arc, Break Shot & Physical Collisions</em>
 </p>
